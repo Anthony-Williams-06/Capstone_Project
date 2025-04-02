@@ -8,6 +8,6 @@ package business;
  *
  * @author antho
  */
-public class user_pages {
+public class UserPage {
     
 }

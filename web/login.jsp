@@ -26,5 +26,23 @@
         <p>
             ​Art by Ann Williams
         </p>
+        
+	<p>${errors}</p>
+	
+        <form action="Public" method="post">
+            <input type="hidden" name="action" value="login">
+            <label>Email: </label>
+            <input type="text" name="email">
+            <br>
+            <label>Password: </label>
+            <input type="text" name="password">
+            <br>
+            <input type="submit" value="login">
+        </form>
+        
+        <form action="Public" method="post">
+            <input type="hidden" name="action" value="toRegister">
+            <input type="submit" value="Register">
+        </form>
     </body>
 </html>
