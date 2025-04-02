@@ -26,8 +26,8 @@ public class EnvisionDB {
         ps = connection.prepareStatement(query);
         ps.setString(1, user.getFirst_name());
         ps.setString(2, user.getLast_name());
-	ps.setString(3, user.getEmail());
-        ps.setString(4, user.getPassword());
+	ps.setString(1, user.getEmail());
+        ps.setString(2, user.getPassword());
         
 
         int rows = ps.executeUpdate();

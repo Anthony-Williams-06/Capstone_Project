@@ -8,7 +8,7 @@ package business;
  *
  * @author antho
  */
-public class art {
+public class Art {
     private int piece_id;
     private int art_page_id;
 
@@ -55,10 +55,10 @@ public class art {
     private float price;
     private String medium;
 
-    public art() {
+    public Art() {
     }
     
-    public art(int piece_id, int art_page_id, String name, float price, String medium) {
+    public Art(int piece_id, int art_page_id, String name, float price, String medium) {
         this.piece_id = piece_id;
         this.art_page_id = art_page_id;
         this.name = name;

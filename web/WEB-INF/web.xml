@@ -4,14 +4,14 @@
         <servlet-name>Private</servlet-name>
         <servlet-class>Controllers.Private</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>Public</servlet-name>
-        <servlet-class>Controllers.Public</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>Private</servlet-name>
         <url-pattern>/Private</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>Public</servlet-name>
+        <servlet-class>Controllers.Public</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Public</servlet-name>
         <url-pattern>/Public</url-pattern>

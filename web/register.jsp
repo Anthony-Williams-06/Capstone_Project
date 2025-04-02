@@ -17,19 +17,19 @@
             <input type="hidden" name="action" value="register">
 	    <div class="inputContainer">
                 <label for="firstName" >First Name</label>
-                <input type="text" name="firstName" id="email" value="${fName}"/>
+                <input type="text" name="firstName" id="email"/>
             </div>
 	    <div class="inputContainer">
                 <label for="lastName" >Last Name</label>
-                <input type="text" name="lastName" id="email" value="${lName}"/>
+                <input type="text" name="lastName" id="email"/>
             </div>
             <div class="inputContainer">
                 <label for="email" >Email</label>
-                <input type="text" name="email" id="email" value="${email}"/>
+                <input type="text" name="email" id="email"/>
             </div>
             <div class="inputContainer">
                 <label for="password">Password</label>
-                <input type="text" name="password" id="password" value="${password}"/>
+                <input type="text" name="password" id="password" />
             </div>
 	    <input type="submit" value="Register" />
         </form>

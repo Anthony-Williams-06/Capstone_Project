@@ -17,6 +17,9 @@
             <a href="index.jsp">Home</a>
             <a href="about.jsp">About</a>
             <a href="login.jsp">Login</a>
+	    <a href="Public?action=logout">Logout</a>
+	    <a href="Public?action=toRegister">Register</a>
+	    <p>Hello ${loggedInUser.first_name}</p>
         </nav>
         
         <img></img>
@@ -26,23 +29,21 @@
         <p>
             ​Art by Ann Williams
         </p>
-        
+	
 	<p>${errors}</p>
 	
-        <form action="Public" method="post">
-            <input type="hidden" name="action" value="login">
-            <label>Email: </label>
-            <input type="text" name="email">
-            <br>
-            <label>Password: </label>
-            <input type="text" name="password">
-            <br>
-            <input type="submit" value="login">
-        </form>
-        
-        <form action="Public" method="post">
-            <input type="hidden" name="action" value="toRegister">
-            <input type="submit" value="Register">
-        </form>
+	<form action="Public" method="post">
+	    <input type="hidden" name="action" value="login"/>
+	    <div class="form-outline form-white mb-4">
+		<label class="form-label" for="username">Email</label>
+		<input type="text" id="username" name="email" class="form-control form-control-lg" />
+	    </div>
+	    <div class="form-outline form-white mb-4">
+		<label class="form-label" for="password">Password</label>
+		<input type="text" id="password" name="password" class="form-control form-control-lg" />
+	    </div>
+	    <input type="submit" value="Log in" />
+	</form>
+	
     </body>
 </html>

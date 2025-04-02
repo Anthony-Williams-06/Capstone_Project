@@ -79,6 +79,7 @@ public class Public extends HttpServlet {
                      ch.setIterations(4096);
                      if (storedUser == null || !ch.matches(password, storedUser.getPassword())) {
                          errors.put("InvalidCredentials", "Your username or password is incorrect");
+			 url = "/login.jsp";
                      } else {
                          request.getSession().setAttribute("loggedInUser", storedUser);
                          url = "/Private?action=default";
@@ -89,6 +90,7 @@ public class Public extends HttpServlet {
                  request.setAttribute("errors", errors);
                 break;
             }
+	    
             case "register": {
                 HashMap<String, String> errors = new HashMap();
                 

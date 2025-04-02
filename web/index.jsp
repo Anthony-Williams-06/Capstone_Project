@@ -14,12 +14,11 @@
     <body>
         <p>Envision Galleries</p>
         <nav>
-	    <p>${loggedInUser}</p>
             <a href="index.jsp">Home</a>
             <a href="about.jsp">About</a>
             <a href="login.jsp">Login</a>
-	    <a href="Public?action=toRegister">Register</a>
 	    <a href="Public?action=logout">Logout</a>
+	    <a href="Public?action=toRegister">Register</a>
 	    <p>Hello ${loggedInUser.first_name}</p>
         </nav>
     </body>
