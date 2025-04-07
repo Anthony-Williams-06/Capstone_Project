@@ -9,29 +9,29 @@ package business;
  * @author antho
  */
 public class PageElement {
-    private int image_id;
+    private int element_id;
     private int art_page_id;
     private int page_slot;
-    private String image_url;
+    private String source;
     private boolean secret;
 
     public PageElement() {
     }
     
-    public PageElement(int image_id, int art_page_id, int page_slot, String image_url, boolean secret) {
-        this.image_id = image_id;
+    public PageElement(int element_id, int art_page_id, int page_slot, String source, boolean secret) {
+        this.element_id = element_id;
         this.art_page_id = art_page_id;
         this.page_slot = page_slot;
-        this.image_url = image_url;
+        this.source = source;
         this.secret = secret;
     }
 
-    public int getImage_id() {
-        return image_id;
+    public int getElement_id() {
+        return element_id;
     }
 
-    public void setImage_id(int image_id) {
-        this.image_id = image_id;
+    public void setElement_id(int element_id) {
+        this.element_id = element_id;
     }
 
     public int getArt_page_id() {
@@ -50,12 +50,12 @@ public class PageElement {
         this.page_slot = page_slot;
     }
 
-    public String getImage_url() {
-        return image_url;
+    public String getSource() {
+        return source;
     }
 
-    public void setImage_url(String image_url) {
-        this.image_url = image_url;
+    public void setSource(String source) {
+        this.source = source;
     }
 
     public boolean isSecret() {

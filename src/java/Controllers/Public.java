@@ -4,6 +4,7 @@
  */
 package Controllers;
 
+import business.Art;
 import business.User;
 import business.Validation;
 import data.EnvisionDB;
@@ -13,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.HashMap;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
@@ -169,6 +171,24 @@ public class Public extends HttpServlet {
                 }
                 break;
             }
+	    case "allArt": {
+		HashMap<String, String> errors = new HashMap();
+		url = "/allArt.jsp";
+		try {
+		    ArrayList<Art> allArt = EnvisionDB.getAllArt();
+		    request.setAttribute("allArt", allArt);
+		} catch (Exception ex) {
+		    errors.put("general", "There was a problem with a database.");
+		    LOG.log(Level.SEVERE, "Something's Wrong", ex);
+		    request.setAttribute("message", errors);
+		}
+		break;
+	    }
+	    case "goToPiece": {
+		url="/artPage.jsp";
+		
+		break;
+	    }
             case "toRegister": {
                 url = "/register.jsp";
                 break;
