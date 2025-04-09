@@ -10,6 +10,7 @@ import business.User;
 import javax.naming.NamingException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -91,6 +92,7 @@ public class EnvisionDB {
 	    art.setName(rs.getString("name"));
 	    art.setPrice(rs.getDouble("price"));
 	    art.setMedium(rs.getString("medium"));
+	    art.setCover_image(rs.getString("cover_image"));
 
 	    artList.add(art);
 	    
@@ -102,9 +104,43 @@ public class EnvisionDB {
 	return artList;
     }
     
-    public static ArrayList<PageElement> getAllPageElements(int page_id) throws NamingException, SQLException {
+    public static Art getArtPieceByID(int id) throws NamingException, SQLException {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+	ResultSet rs = null;
+
+        String query
+            = "SELECT * FROM art " + 
+            "WHERE piece_id = ?";
+	
+	ps = connection.prepareStatement(query);
+        ps.setInt(1, id);
+        rs = ps.executeQuery();
         
-	ArrayList<PageElement> pageElementsList = new ArrayList();
+	if (rs.next()) {
+	    Art art = new Art();
+	    art.setPiece_id(rs.getInt("piece_id"));
+	    art.setArt_page_id(rs.getInt("art_page_id"));
+	    art.setName(rs.getString("name"));
+	    art.setPrice(rs.getDouble("price"));
+	    art.setMedium(rs.getString("medium"));
+	    art.setCover_image(rs.getString("cover_image"));
+
+	    ps.close();
+	    pool.freeConnection(connection);
+	    return art;
+	} else {
+	    ps.close();
+	    pool.freeConnection(connection);
+	    return null;
+	}
+    }
+    
+    
+    public static HashMap<String, PageElement> getAllPageElements(int page_id) throws NamingException, SQLException {
+        
+	HashMap<String, PageElement> pageElementsList = new HashMap();
 	ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
@@ -112,7 +148,7 @@ public class EnvisionDB {
 
         String query
             = "SELECT * FROM page_element " + 
-            "WHERE page_id = ?";
+            "WHERE art_page_id = ?";
 	
 	ps = connection.prepareStatement(query);
         ps.setInt(1, page_id);
@@ -120,10 +156,11 @@ public class EnvisionDB {
         
 	while (rs.next()) {
 	    PageElement pageElement = new PageElement();
-	    pageElement.setElement_id(rs.getInt("element_id"));
+	    pageElement.setElement_id(rs.getInt("page_element_id"));
 	    pageElement.setArt_page_id(rs.getInt("art_page_id"));
 	    pageElement.setPage_slot(rs.getInt("page_slot"));
 	    pageElement.setSource(rs.getString("source"));
+	    pageElement.setElement_type(rs.getString("element_type"));
 	    
 	    int secret = rs.getInt("secret");
 	    if(secret == 1){
@@ -133,10 +170,7 @@ public class EnvisionDB {
 		pageElement.setSecret(false);
 	    }
 	    
-
-	    ps.close();
-	    pool.freeConnection(connection);
-	    pageElementsList.add(pageElement);
+	    pageElementsList.put(Integer.toString(pageElement.getPage_slot()), pageElement);
 	} 
 	
 	ps.close();

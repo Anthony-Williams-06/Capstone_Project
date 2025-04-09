@@ -5,6 +5,7 @@
 package Controllers;
 
 import business.Art;
+import business.PageElement;
 import business.User;
 import business.Validation;
 import data.EnvisionDB;
@@ -16,6 +17,8 @@ import java.util.HashMap;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.Map;
+import static java.util.Map.entry;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -178,7 +181,7 @@ public class Public extends HttpServlet {
 		    ArrayList<Art> allArt = EnvisionDB.getAllArt();
 		    request.setAttribute("allArt", allArt);
 		} catch (Exception ex) {
-		    errors.put("general", "There was a problem with a database.");
+		    errors.put("general", "There was a problem with the database.");
 		    LOG.log(Level.SEVERE, "Something's Wrong", ex);
 		    request.setAttribute("message", errors);
 		}
@@ -186,7 +189,38 @@ public class Public extends HttpServlet {
 	    }
 	    case "goToPiece": {
 		url="/artPage.jsp";
+		int piece_id = 0;
+		Art artPiece = new Art();
+		HashMap<String, String> errors = new HashMap();
+		HashMap<String, PageElement> pageElements = new HashMap();
 		
+		try{
+		    String pieceIdString = request.getParameter("PieceID");
+		    piece_id = Integer.parseInt(pieceIdString);
+		    
+		    try {
+			artPiece = EnvisionDB.getArtPieceByID(piece_id);
+			int artpage_id = artPiece.getArt_page_id();
+			pageElements = EnvisionDB.getAllPageElements(artpage_id);
+		    } catch (NamingException | SQLException ex) {
+			LOG.log(Level.SEVERE, "Something's Wrong", ex);
+			errors.put("general", "There was a problem with the database");
+			request.setAttribute("message", errors);
+		    }
+		    
+		} catch (NumberFormatException ex){
+		    LOG.log(Level.SEVERE, "Something's Wrong", ex);
+		    errors.put("pageID", "Invalid Page ID");
+		    request.setAttribute("message", errors);
+		}
+		
+		for(int i=1; i<= pageElements.size(); i++){
+		    if(pageElements.get(Integer.toString(i)).isSecret()){
+			pageElements.remove(Integer.toString(i));
+		    }
+		}
+		request.setAttribute("piece", artPiece);
+		request.setAttribute("pageElements", pageElements);
 		break;
 	    }
             case "toRegister": {

@@ -16,7 +16,7 @@
 	<c:forEach items='${allArt}' var='piece'>
 	    <form action="Public" method="post">
 		<input type="hidden" name="action" value="goToPiece">
-		<input type="hidden" name="pageId" value="${piece.art_page_id}"/>
+		<input type="hidden" name="PieceID" value="${piece.piece_id}"/>
 		<input type="submit" value="${piece.name}"/>
 	    </form>
 	</c:forEach>

@@ -14,16 +14,18 @@ public class PageElement {
     private int page_slot;
     private String source;
     private boolean secret;
+    private String element_type;
 
     public PageElement() {
     }
     
-    public PageElement(int element_id, int art_page_id, int page_slot, String source, boolean secret) {
+    public PageElement(int element_id, int art_page_id, int page_slot, String source, boolean secret, String element_type) {
         this.element_id = element_id;
         this.art_page_id = art_page_id;
         this.page_slot = page_slot;
         this.source = source;
         this.secret = secret;
+	this.element_type = element_type;
     }
 
     public int getElement_id() {
@@ -64,6 +66,14 @@ public class PageElement {
 
     public void setSecret(boolean secret) {
         this.secret = secret;
+    }
+
+    public String getElement_type() {
+	return element_type;
+    }
+
+    public void setElement_type(String element_type) {
+	this.element_type = element_type;
     }
     
     
