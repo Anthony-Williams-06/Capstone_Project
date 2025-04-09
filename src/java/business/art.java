@@ -9,8 +9,25 @@ package business;
  * @author antho
  */
 public class Art {
+    
     private int piece_id;
     private int art_page_id;
+    private String name;
+    private double price;
+    private String medium;
+    private String cover_image;
+
+    public Art() {
+    }
+    
+    public Art(int piece_id, int art_page_id, String name, float price, String medium, String cover_image) {
+        this.piece_id = piece_id;
+        this.art_page_id = art_page_id;
+        this.name = name;
+        this.price = price;
+        this.medium = medium;
+	this.cover_image = cover_image;
+    }
 
     public int getPiece_id() {
         return piece_id;
@@ -36,11 +53,11 @@ public class Art {
         this.name = name;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -51,19 +68,15 @@ public class Art {
     public void setMedium(String medium) {
         this.medium = medium;
     }
-    private String name;
-    private float price;
-    private String medium;
 
-    public Art() {
+    public String getCover_image() {
+	return cover_image;
+    }
+
+    public void setCover_image(String cover_image) {
+	this.cover_image = cover_image;
     }
     
-    public Art(int piece_id, int art_page_id, String name, float price, String medium) {
-        this.piece_id = piece_id;
-        this.art_page_id = art_page_id;
-        this.name = name;
-        this.price = price;
-        this.medium = medium;
-    }
+    
     
 }
