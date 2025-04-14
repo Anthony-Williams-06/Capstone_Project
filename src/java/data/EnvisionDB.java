@@ -137,6 +137,31 @@ public class EnvisionDB {
 	}
     }
     
+    public static String getSecretAuth(int id) throws NamingException, SQLException {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+	ResultSet rs = null;
+	String output = "";
+
+        String query
+            = "SELECT * FROM page " + 
+            "WHERE page_id = ?";
+	
+	ps = connection.prepareStatement(query);
+        ps.setInt(1, id);
+        rs = ps.executeQuery();
+	
+	if(rs.next())
+	{
+	    output = rs.getString("secret_url_extension");
+	}
+
+	ps.close();
+	pool.freeConnection(connection);
+	return output;
+    }
+    
     
     public static HashMap<String, PageElement> getAllPageElements(int page_id) throws NamingException, SQLException {
         

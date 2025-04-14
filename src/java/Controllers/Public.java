@@ -214,15 +214,69 @@ public class Public extends HttpServlet {
 		    request.setAttribute("message", errors);
 		}
 		
-		for(int i=1; i<= pageElements.size(); i++){
-		    if(pageElements.get(Integer.toString(i)).isSecret()){
-			pageElements.remove(Integer.toString(i));
+		
+		for(int i=1; i<=6; i++){
+		    if(pageElements.get(Integer.toString(i)) != null)
+		    {
+			if(pageElements.get(Integer.toString(i)).isSecret()){
+			    pageElements.remove(Integer.toString(i));
+			}
 		    }
+		    
 		}
 		request.setAttribute("piece", artPiece);
 		request.setAttribute("pageElements", pageElements);
 		break;
 	    }
+	    
+	    case "toSecretPage": {
+		url="/secretPage.jsp";
+		int piece_id = 0;
+		Art artPiece = new Art();
+		HashMap<String, String> errors = new HashMap();
+		HashMap<String, PageElement> pageElements = new HashMap();
+		String secretauth = "";
+		int artpage_id = 0;
+		
+		try{
+		    String pieceIdString = request.getParameter("PieceID");
+		    piece_id = Integer.parseInt(pieceIdString);
+		    
+		    try {
+			artPiece = EnvisionDB.getArtPieceByID(piece_id);
+			artpage_id = artPiece.getArt_page_id();
+			secretauth = EnvisionDB.getSecretAuth(artpage_id);			
+			pageElements = EnvisionDB.getAllPageElements(artpage_id);
+		    } catch (NamingException | SQLException ex) {
+			LOG.log(Level.SEVERE, "Something's Wrong", ex);
+			errors.put("general", "There was a problem with the database");
+			request.setAttribute("message", errors);
+		    }
+		    
+		} catch (NumberFormatException ex){
+		    LOG.log(Level.SEVERE, "Something's Wrong", ex);
+		    errors.put("pageID", "Invalid Page ID");
+		    request.setAttribute("message", errors);
+		}
+		
+		
+		
+		if(!request.getParameter("auth").equals(secretauth)){
+		    for(int i=1; i<= 6; i++){
+			if(pageElements.get(Integer.toString(i)) != null)
+			{
+			    if(pageElements.get(Integer.toString(i)).isSecret()){
+				pageElements.remove(Integer.toString(i));
+			    }
+			}
+		    }
+		}
+		
+		request.setAttribute("piece", artPiece);
+		request.setAttribute("pageElements", pageElements);
+		break;
+	    }
+	    
             case "toRegister": {
                 url = "/register.jsp";
                 break;

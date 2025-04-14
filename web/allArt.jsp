@@ -20,5 +20,19 @@
 		<input type="submit" value="${piece.name}"/>
 	    </form>
 	</c:forEach>
+	
+	<form action="Public" method="post">
+		<input type="hidden" name="action" value="toSecretPage">
+		<input type="hidden" name="PieceID" value="${allArt["0"].piece_id}"/>
+		<input type="hidden" name="auth" value="1234">
+		<input type="submit" value="${allArt["0"].name} Secret"/>
+	</form>
+	
+	<form action="Public" method="post">
+		<input type="hidden" name="action" value="toSecretPage">
+		<input type="hidden" name="PieceID" value="${allArt["0"].piece_id}"/>
+		<input type="hidden" name="auth" value="0000">
+		<input type="submit" value="${allArt["0"].name} Secret Fail"/>
+	</form>
     </body>
 </html>

@@ -25,7 +25,7 @@
 	<img src="${imgPath1}" alt="Test Image"/>
 
 	<c:url value="/images/${pageElements['3'].source}" var="imgPath2"/>
-	<img src="${imgPath}" alt="Test Image"/>
+	<img src="${imgPath2}" alt="Test Image"/>
         <p>${pageElements["4"].source}</p>
         
     </body>
