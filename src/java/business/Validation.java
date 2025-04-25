@@ -23,7 +23,7 @@ public class Validation {
         
         if (email.isEmpty()) {
             errorMessage += "Please enter an email. ";
-        } else if (EmailValidator.getInstance().isValid(email)) {
+        } else if (!EmailValidator.getInstance().isValid(email)) {
             errorMessage += "Please give a valid email. ";
 	}
         

@@ -1,0 +1,72 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Apr 25, 2025, 2:33:03 AM
+    Author     : antho
+*/
+
+.cover-section {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+.cover-image {
+    width: 300px;
+    height: 400px;
+    object-fit: contain;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+.cover-text {
+    flex: 1;
+}
+.row-element img {
+    width: 100%;
+    max-width: 800px;
+    height: 300px;
+    object-fit: contain;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin: 0 auto;
+}
+.row-element {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 300px;
+}
+.art-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    width: 90%;
+    max-width: 700px;
+    text-align: left;
+}
+.form-group {
+    margin-bottom: 15px; /* Add spacing between form groups */
+}
+.form-container {
+    margin-top: 20px; /* Consistent spacing from top */
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f8f9fa; /* Subtle background for contrast */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+}
+.form-container h1 {
+    text-align: center; /* Center-align the title */
+    margin-bottom: 30px;
+}
+.photo {
+    display: block;
+    margin: 10px 0;
+}
+.textBox {
+    width: 100%; /* Full width for text areas */
+    height: 100px; /* Consistent height for text boxes */
+    resize: none; /* Disable resizing for consistency */
+}

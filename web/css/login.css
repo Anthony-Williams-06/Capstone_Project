@@ -1,0 +1,36 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Apr 25, 2025, 1:04:16 AM
+    Author     : antho
+*/
+body {
+    background-color: #f8f9fa;
+}
+.login-card {
+    max-width: 400px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+.brand-text {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #007bff;
+}
+.form-label {
+    font-weight: 600;
+}
+.login-btn {
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+}
+.login-btn:hover {
+    background-color: #0056b3;
+}

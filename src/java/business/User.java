@@ -14,16 +14,25 @@ public class User {
     private String last_name;
     private String email;
     private String password;
+    private String role;
 
     public User() {
     }
 
-    public User(int user_id, String first_name, String last_name, String email, String password) {
+    public User(int user_id, String first_name, String last_name, String email, String password, String role) {
         this.user_id = user_id;
         this.first_name = first_name;
         this.last_name = last_name;
         this.email = email;
         this.password = password;
+    }
+
+    public String getRole() {
+	return role;
+    }
+
+    public void setRole(String role) {
+	this.role = role;
     }
 
     public int getUser_id() {

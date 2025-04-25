@@ -9,15 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <title>About</title>
     </head>
     <body>
-        <p>About</p>
-        <nav>
-            <a href="index.jsp">Home</a>
-            <a href="about.jsp">About</a>
-            <a href="login.jsp">Login</a>
-            
-        </nav>
+        <jsp:include page="header.jsp" />
     </body>
 </html>

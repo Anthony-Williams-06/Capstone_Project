@@ -1,0 +1,31 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Apr 25, 2025, 1:17:50 AM
+    Author     : antho
+*/
+
+.card {
+    width: 300px; /* Constant card width */
+    height: 400px; /* Constant card height */
+    cursor: pointer; /* Makes the card appear clickable */
+    border-radius: 16px; /* Rounded corners */
+    overflow: hidden; /* Ensures content stays within rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+.card img {
+    width: 100%;
+    height: 70%; /* Image takes up 70% of the card */
+    object-fit: contain; /* Shrinks image to fit fully within the box */
+    background-color: #f8f9fa; /* Neutral background for whitespace */
+}
+.card-body {
+    height: 30%; /* Body takes up the remaining 30% of the card */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}

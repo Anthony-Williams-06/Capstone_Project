@@ -83,14 +83,14 @@ public class Public extends HttpServlet {
                      ch.setSaltLength(16);
                      ch.setIterations(4096);
                      if (storedUser == null || !ch.matches(password, storedUser.getPassword())) {
-                         errors.put("InvalidCredentials", "Your username or password is incorrect");
+                         errors.put("password", "Your username or password is incorrect");
 			 url = "/login.jsp";
                      } else {
                          request.getSession().setAttribute("loggedInUser", storedUser);
                          url = "/Private?action=default";
                      }
                  } catch (Exception ex) {
-                     errors.put("Hash", "Problem with hashing password");
+                     errors.put("password", "Problem with hashing password");
                  }
                  request.setAttribute("errors", errors);
                 break;
@@ -140,14 +140,14 @@ public class Public extends HttpServlet {
                         hash = ch.mutate(password);
                     } catch (Exception ex) {
                         LOG.log(Level.SEVERE, null, ex);
-                        errors.put("hash", "Error with hashing algorithm.");
+                        errors.put("general", "Error with hashing algorithm.");
                     }
                     
 		    if(errors.isEmpty())
 		    {
 			Integer userId = 0;
 
-			User user = new User(userId, first_name, last_name, email, hash);
+			User user = new User(userId, first_name, last_name, email, hash, "User");
 			try {
 			    EnvisionDB.insert(user);
 			    url = "/index.jsp";
@@ -200,8 +200,7 @@ public class Public extends HttpServlet {
 		    
 		    try {
 			artPiece = EnvisionDB.getArtPieceByID(piece_id);
-			int artpage_id = artPiece.getArt_page_id();
-			pageElements = EnvisionDB.getAllPageElements(artpage_id);
+			pageElements = EnvisionDB.getAllPageElements(piece_id);
 		    } catch (NamingException | SQLException ex) {
 			LOG.log(Level.SEVERE, "Something's Wrong", ex);
 			errors.put("general", "There was a problem with the database");
@@ -236,7 +235,6 @@ public class Public extends HttpServlet {
 		HashMap<String, String> errors = new HashMap();
 		HashMap<String, PageElement> pageElements = new HashMap();
 		String secretauth = "";
-		int artpage_id = 0;
 		
 		try{
 		    String pieceIdString = request.getParameter("PieceID");
@@ -244,9 +242,8 @@ public class Public extends HttpServlet {
 		    
 		    try {
 			artPiece = EnvisionDB.getArtPieceByID(piece_id);
-			artpage_id = artPiece.getArt_page_id();
-			secretauth = EnvisionDB.getSecretAuth(artpage_id);			
-			pageElements = EnvisionDB.getAllPageElements(artpage_id);
+			secretauth = EnvisionDB.getSecretAuth(piece_id);			
+			pageElements = EnvisionDB.getAllPageElements(piece_id);
 		    } catch (NamingException | SQLException ex) {
 			LOG.log(Level.SEVERE, "Something's Wrong", ex);
 			errors.put("general", "There was a problem with the database");
@@ -271,7 +268,7 @@ public class Public extends HttpServlet {
 			}
 		    }
 		}
-		
+		request.setAttribute("validRequest", true);
 		request.setAttribute("piece", artPiece);
 		request.setAttribute("pageElements", pageElements);
 		break;
