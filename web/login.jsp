@@ -14,10 +14,8 @@
         <link rel="stylesheet" href="css/login.css">
     </head>
     <body>
-        <!-- Include Header -->
         <jsp:include page="header.jsp" />
 
-        <!-- Login Form Container -->
         <div class="login-card">
             <div class="text-center mb-4">
                 <span class="brand-text">Envision Galleries</span>

@@ -48,17 +48,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     text-align: left;
 }
 .form-group {
-    margin-bottom: 15px; /* Add spacing between form groups */
+    margin-bottom: 15px; 
 }
 .form-container {
-    margin-top: 20px; /* Consistent spacing from top */
+    margin-top: 20px; 
     padding: 20px;
     border-radius: 8px;
-    background-color: #f8f9fa; /* Subtle background for contrast */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    background-color: #f8f9fa; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
 .form-container h1 {
-    text-align: center; /* Center-align the title */
+    text-align: center; 
     margin-bottom: 30px;
 }
 .photo {
@@ -66,7 +66,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     margin: 10px 0;
 }
 .textBox {
-    width: 100%; /* Full width for text areas */
-    height: 100px; /* Consistent height for text boxes */
-    resize: none; /* Disable resizing for consistency */
+    width: 100%; 
+    height: 100px; 
+    resize: none; 
 }
